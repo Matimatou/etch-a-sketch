@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1500px;
+    flex: 1;
+    justify-content: center;
+}
+
+.case {
+    min-width: 32px;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    border: 5px solid salmon;
+}
