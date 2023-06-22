@@ -25,11 +25,14 @@ function createGrid(gridwidth) {
 }
 function createHoverEffect(gridArray) {
     function addHoverEffectToCase(element, color) {
-        return () => { element.style.backgroundColor = color };
+        if (color !== 'random')
+            return () => { element.style.backgroundColor = color };
+        else
+            return () => { element.style.backgroundColor = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})` };
     }
     // Loop on the cases
     gridArray.forEach(element => {
-        element.addEventListener('mouseover', addHoverEffectToCase(element, 'black'));
+        element.addEventListener('mouseover', addHoverEffectToCase(element, 'random'));
     });
 }
 function addEffectToButton() {
