@@ -1,41 +1,48 @@
-let GRIDWIDTH = 16;
-const body = document.querySelector('body');
+const GRIDWIDTHINIT = 16;
 
+// Get HTML element
+const body = document.querySelector('body');
 const grid = document.querySelector('.grid');
-/*Compute the correct size of Width in order that the grid looks rectangular*/
-function sizeGrid() {
-    grid.offsetWidth = 'fit-content';
-}
-function computeWidth() {
-    return [GRIDWIDTH, GRIDWIDTH];
-}
-function createGrid() {
-    for (let i = 0; i < computeWidth()[0]; i++) {
+const button = document.querySelector('button')
+
+// Create the css case class
+const caseClass = document.createElement('style');
+
+function createGrid(gridwidth) {
+
+    for (let i = 0; i < gridwidth; i++) {
         const column = document.createElement('div');
         column.classList.add("column")
-        for (let j = 0; j < computeWidth()[1]; j++) {
+        for (let j = 0; j < gridwidth; j++) {
             const div = document.createElement('div');
             div.classList.add('case');
-            //div.textContent = `${i * GRIDWIDTH + j}`;
+            // div.textContent = `${i * gridwidth + j}`;
             column.appendChild(div);
         }
         grid.appendChild(column);
     }
+    return document.querySelectorAll('.case')
 }
-
-
-createGrid(); // CETTE LIGNE JE L'AVAIS OUBLIÉE
-const gridArray = document.querySelectorAll('.case');
-
-function createHoverEffect() {
+function createHoverEffect(gridArray) {
     function addHoverEffectToCase(element, color) {
         return () => { element.style.backgroundColor = color };
     }
     // Loop on the cases
     gridArray.forEach(element => {
-        console.log(typeof (element));
         element.addEventListener('mouseover', addHoverEffectToCase(element, 'black'));
     });
 }
-createHoverEffect();
+function addEffectToButton() {
+    function addPromptToButton() {
+        const newGridWidth = prompt('Enter the number of cases per side');
+        clearGrid();
+        createHoverEffect(createGrid(newGridWidth));
+    }
+    function clearGrid() {
+        grid.innerHTML = '';
+    }
+    button.addEventListener('click', addPromptToButton);
+}
+createHoverEffect(createGrid(GRIDWIDTHINIT));
+addEffectToButton();
 

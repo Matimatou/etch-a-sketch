@@ -7,17 +7,21 @@ body {
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 1500px;
+    width: fit-content;
+    height: 150px;
     flex: 1;
     justify-content: center;
 }
 
 .case {
-    min-width: 16px;
-    min-height: 16px;
     background-color: white;
     display: flex;
     justify-content: center;
-    padding: 15px;
+    padding: 5px;
     border: 2px solid salmon;
+}
+
+button {
+    margin-bottom: 21.44px;
+    font-size: large;
 }
