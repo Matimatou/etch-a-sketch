@@ -5,11 +5,9 @@ const body = document.querySelector('body');
 const grid = document.querySelector('.grid');
 const button = document.querySelector('button')
 
-// Create the css case class
-const caseClass = document.createElement('style');
+
 
 function createGrid(gridwidth) {
-
     for (let i = 0; i < gridwidth; i++) {
         const column = document.createElement('div');
         column.classList.add("column")
